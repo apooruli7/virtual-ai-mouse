@@ -22,14 +22,21 @@ while True:
     img = detector.findHands(img)
     lmList, bbox = detector.findPosition(img)
 
-    
-    # Step Two find the tip of the indez finger and thumb
+    # Step Two find the tip of the index finger and thumb
+    if len(lmList) != 0:
+        x1, y1 = lmList[8][1:]
+        x2, y2 = lmList[12][1:]
+
     # Step Three is to check if the fingers are up
+    fingers = detector.fingersUp()
+    cv2.rectangle(img, (frameR, frameR), (wCam - frameR, hCam - frameR),
+    (255, 0, 255), 2)
+
     # Step Four if index finger moving just move the mouse
     # Step Five get and convert coordinates
     # Step Six value smoothing
     # Step Seven will be to move the mouse
-    # Step Eight if idex and thumb finger are between a certian distance then click
+    # Step Eight if index and thumb finger are between a certain distance then click
     # Step Nine will be to find the distance
     # Step Ten click the mouse if within the value
 
