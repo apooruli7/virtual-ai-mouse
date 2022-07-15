@@ -33,8 +33,16 @@ while True:
     (255, 0, 255), 2)
 
     # Step Four if index finger moving just move the mouse
+    if fingers[1] == 1 and fingers[2] == 0:
+
     # Step Five get and convert coordinates
+    x3 = np.interp(x1, (frameR, wCam - frameR), (0, wScr))
+    y3 = np.interp(y1, (frameR, hCam - frameR), (0, hScr))
+
     # Step Six value smoothing
+    clocX = plocX + (x3 - plocX) / smoothening
+    clocY = plocY + (y3 - plocY) / smoothening
+
     # Step Seven will be to move the mouse
     # Step Eight if index and thumb finger are between a certain distance then click
     # Step Nine will be to find the distance
